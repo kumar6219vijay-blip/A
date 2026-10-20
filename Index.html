@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhinav's Stories</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #050817;
+  color: white;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 35px 20px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 75% 80%,
+      #ff884c 0%, transparent 30%),
+    radial-gradient(ellipse at 20% 40%,
+      #552e9b 0%, transparent 40%),
+    linear-gradient(160deg,
+      #030819, #111c51 48%, #21143e 75%, #07091a);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(white 1px, transparent 1.5px),
+    radial-gradient(#75caff 1px, transparent 1.5px);
+  background-size: 70px 70px, 113px 113px;
+  background-position: 0 0, 35px 20px;
+  opacity: .55;
+  animation: stars 25s linear infinite;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25%;
+  background: linear-gradient(
+    transparent, #060817 95%
+  );
+  pointer-events: none;
+}
+
+@keyframes stars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-70px); }
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  background: #05081735;
+  backdrop-filter: blur(8px);
+}
+
+.logo {
+  color: #69baff;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  font-size: 13px;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  animation: appear 1.3s ease both;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tag {
+  letter-spacing: 7px;
+  font-size: 13px;
+  color: #c4d9ff;
+  margin-bottom: 22px;
+}
+
+h1 {
+  font-size: clamp(42px, 9vw, 86px);
+  line-height: 1.08;
+  font-weight: 900;
+  letter-spacing: -3px;
+}
+
+h1 span {
+  display: block;
+  background: linear-gradient(
+    100deg, #fff, #80bdff, #a88bff
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px #438aff55);
+}
+
+.subtitle {
+  margin-top: 25px;
+  color: #d4d9f5;
+  letter-spacing: 3px;
+  font-size: 13px;
+}
+
+.birth {
+  margin: 38px auto 0;
+  padding: 22px;
+  max-width: 440px;
+  border: 1px solid #86b9ff55;
+  border-radius: 18px;
+  background: #111b3c88;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 35px #377bff15;
+}
+
+.birth h2 {
+  color: #a7ceff;
+  font-size: 13px;
+  letter-spacing: 4px;
+  margin-bottom: 18px;
+}
+
+.birth-date {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.birth small {
+  display: block;
+  margin-top: 9px;
+  color: #aebbe0;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 14px 25px;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  background: linear-gradient(100deg, #286dff, #8953ee);
+  box-shadow: 0 0 25px #4e69ff55;
+  transition: .3s;
+}
+
+.button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 35px #4e69ff99;
+}
+
+.scroll {
+  margin-top: 30px;
+  color: #c5cce8;
+  font-size: 10px;
+  letter-spacing: 4px;
+}
+
+section:not(.hero) {
+  padding: 75px 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.section-title span {
+  color: #76b6ff;
+}
+
+.intro {
+  max-width: 650px;
+  margin: 0 auto;
+  color: #b8c2df;
+  line-height: 1.8;
+}
+
+.cards {
+  max-width: 950px;
+  margin: 35px auto 0;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit, minmax(210px, 1fr)
+  );
+  gap: 18px;
+}
+
+.card {
+  padding: 27px 20px;
+  border-radius: 18px;
+  border: 1px solid #668cff35;
+  background: linear-gradient(
+    145deg, #121b3c, #0b1024
+  );
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #72b5ff;
+}
+
+.card .emoji {
+  font-size: 32px;
+}
+
+.card h3 {
+  margin: 15px 0 10px;
+  color: #a7ceff;
+}
+
+.card p {
+  color: #b8c2df;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+footer {
+  padding: 25px;
+  text-align: center;
+  color: #8994b7;
+  border-top: 1px solid #ffffff12;
+  font-size: 12px;
+}
+
+@media (max-width: 500px) {
+  nav { padding: 18px 13px; }
+  nav a { margin-left: 8px; font-size: 11px; }
+  .tag { letter-spacing: 4px; }
+  h1 { letter-spacing: -2px; }
+  .birth { padding: 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">A.S. ✦</div>
+  <div>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#stories">Stories</a>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="content">
+    <p class="tag">WELCOME TO</p>
+
+    <h1>
+      Abhinav's
+      <span>Stories</span>
+    </h1>
+
+    <p class="subtitle">
+      MY LIFE · MY DREAMS · MY STORIES
+    </p>
+
+    <div class="birth">
+      <h2>✦ MY BIRTHDAY ✦</h2>
+      <div class="birth-date" id="birthday">
+        DD · MONTH · YYYY
+      </div>
+      <small>THE DAY MY STORY BEGAN</small>
+      <p id="age" style="margin-top:15px;color:#a7ceff">
+        A new chapter every day ✨
+      </p>
+    </div>
+
+    <a href="#about" class="button">
+      Enter My World ✦
+    </a>
+
+    <p class="scroll">↓ &nbsp; SCROLL TO EXPLORE</p>
+  </div>
+</header>
+
+<section id="about">
+  <h2 class="section-title">
+    The Boy Behind <span>The Story</span>
+  </h2>
+
+  <p class="intro">
+    Hey! I'm Abhinav. Welcome to my little corner of
+    the internet. This is where my interests, dreams,
+    favourite things and memories come together.
+    Every day is another page in my story.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="emoji">🎌</div>
+      <h3>Anime World</h3>
+      <p>My favourite anime, epic characters
+      and unforgettable adventures.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">⚽</div>
+      <h3>My Passions</h3>
+      <p>Football, cricket, gaming and
+      the things that make life exciting.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🌌</div>
+      <h3>My Dreams</h3>
+      <p>Big ambitions, new adventures
+      and a future I'm excited to create.</p>
+    </div>
+  </div>
+</section>
+
+<section id="stories">
+  <h2 class="section-title">
+    My <span>Stories</span>
+  </h2>
+
+  <p class="intro">
+    Every memory has a story. Every dream has a
+    beginning. This is only the first chapter.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="emoji">📖</div>
+      <h3>Chapter 01</h3>
+      <p>The beginning of Abhinav's journey.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🚀</div>
+      <h3>Chapter 02</h3>
+      <p>The dreams I'm chasing.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">✨</div>
+      <h3>Chapter 03</h3>
+      <p>The best chapters are still ahead.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Made with ❤️ by Abhinav
+  <p style="margin-top:8px">
+    © <span id="year"></span> Abhinav's Stories
+  </p>
+</footer>
+
+<script>
+/* EDIT YOUR BIRTHDAY HERE */
+const birthDate = ""; // Example: "2014-10-21"
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+if (birthDate) {
+  const dob = new Date(birthDate + "T12:00:00");
+
+  document.getElementById("birthday").textContent =
+    dob.toLocaleDateString("en-IN", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric"
+    });
+
+  let age = new Date().getFullYear() -
+            dob.getFullYear();
+
+  const today = new Date();
+  const birthdayThisYear = new Date(
+    today.getFullYear(),
+    dob.getMonth(),
+    dob.getDate()
+  );
+
+  if (today < birthdayThisYear) age--;
+
+  document.getElementById("age").textContent =
+    "Writing my story, one year at a time ✨";
+}
+</script>
+
+</body>
+</html>
